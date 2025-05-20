@@ -6,15 +6,15 @@
 <div class="container py-5">
   <div class="row g-4">
 
-<div class="col-md-4 d-flex">
-  <div class="card p-4 text-center">
-    <div class="d-flex justify-content-center mb-3">
-      <img src="{{ asset('images/profile.jpg') }}" class="rounded img-fluid w-50">
-    </div>
-    <h5 class="fw-bold mb-0">Narji Escobar</h5>
-    <small class="text-muted">Staff Dinas Kesehatan</small>
-  </div>
-</div>
+        <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <div class="d-flex justify-content-center mb-3">
+            <img src="{{ asset('images/profile.jpg') }}" class="rounded img-fluid w-50">
+            </div>
+            <h5 class="fw-bold mb-0">Narji Escobar</h5>
+            <small class="text-muted">Staff Dinas Kesehatan</small>
+        </div>
+        </div>
 
     <!-- Informasi Personal -->
     <div class="col-md-8">
