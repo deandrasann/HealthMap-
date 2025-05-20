@@ -1,0 +1,97 @@
+body{
+    font-family: 'Montserrat', sans-serif !important;
+    color: black !important;
+}
+
+.btn-primary{
+    background-color: #F8FFF3 !important;
+    color: #000000 !important;
+}
+.btn-primary:hover{
+    background-color: #27391C !important;
+    color: #FFFFFF !important;
+}
+.nav-link.active,
+.btn.active {
+    background-color: #27391C !important;
+    color: #ffffff !important;
+    border-color: #1a2b14 !important;
+}
+.content{
+    background-color: #F8FFF3;
+}
+
+thead tr th{
+    background-color: #27391C !important;
+    color: #FFFFFF !important;
+}
+
+.form-control {
+    border-color: #27391C !important;
+    border-width: 2px !important;  /* Set the border width */
+}
+
+.form-control:focus {
+    border-color: #27391C !important;
+    border-width: 2px !important;  /* Set the border width */
+    box-shadow: none !important;
+}
+
+.input-group-text{
+    border-color: #27391C !important;
+    border-width: 2px !important;  /* Set the border width */
+}
+
+.paginate .pagination {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.paginate .pagination li {
+    margin: 0 5px;
+}
+
+.paginate .pagination li a, .paginate .pagination li span {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 4px; /* Rounded corners */
+    background-color: #f8f9fa; /* Light background */
+    border: none;
+    color: #6c757d; /* Light text */
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.paginate .pagination li a:hover {
+    background-color: #e2e6ea; /* Hover effect */
+    color: #27391C; /* Hover text color */
+}
+
+.paginate .pagination li.active span {
+    background-color: white;
+    border: 2px solid #27391C; /* Border around active button */
+    color: #27391C;
+}
+
+.paginate .pagination li.disabled span, .paginate .pagination li.disabled a {
+    color: #d3d3d3; /* Disabled link color */
+}
+
+.paginate .pagination li.disabled a:hover {
+    background-color: #f8f9fa; /* Keep hover effect disabled */
+}
+
+#stuntingChart {
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: none !important;
+}
+
