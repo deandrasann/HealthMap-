@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="{{asset('images/healthmap-logo.png')}}">
 
     <style>
-
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
         * {
@@ -102,8 +102,8 @@
         .container {
             background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-                    0 10px 10px rgba(0,0,0,0.22);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
             position: relative;
             overflow: hidden;
             width: 768px;
@@ -143,12 +143,15 @@
         }
 
         @keyframes show {
-            0%, 49.99% {
+
+            0%,
+            49.99% {
                 opacity: 0;
                 z-index: 1;
             }
 
-            50%, 100% {
+            50%,
+            100% {
                 opacity: 1;
                 z-index: 5;
             }
@@ -165,7 +168,7 @@
             z-index: 100;
         }
 
-        .container.right-panel-active .overlay-container{
+        .container.right-panel-active .overlay-container {
             transform: translateX(-100%);
         }
 
@@ -235,45 +238,47 @@
             height: 40px;
             width: 40px;
         }
-
     </style>
 </head>
+
 <body>
-<div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="#">
-			<h1>Create Account</h1>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button>Sign Up</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1>Sign in</h1>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button>Sign In</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-			</div>
-		</div>
-	</div>
-</div>
-</footer>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#" id="signup-form">
+                <h1>Create Account</h1>
+                <input type="text" placeholder="Name" id="name-signup" />
+                <input type="email" placeholder="Email" id="email-signup" />
+                <input type="password" placeholder="Password" id="pass-signup" />
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#" id="signin-form">
+                <h1>Sign in</h1>
+                <input type="email" placeholder="Email" id="email-signin" />
+                <input type="password" placeholder="Password" id="pass-signin" />
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
@@ -286,5 +291,86 @@
     signInButton.addEventListener('click', () => {
         container.classList.remove("right-panel-active");
     });
+
+    $('#signup-form').submit(function(e) {
+        e.preventDefault();
+
+        let name = $('#name-signup').val();
+        let email = $('#email-signup').val();
+        let password = $('#pass-signup').val();
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/register/healthmap/admin',
+            type: 'POST',
+            data: JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+            }),
+            contentType: 'application/json',
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function(response) {
+                console.log('Sign Up berhasil!', response);
+                localStorage.setItem('token', response.access_token);
+
+                setTimeout(function() {
+                    window.location.href = 'dashboard';
+                }, 3000);
+            },
+            error: function(xhr) {
+                let errorMessage = 'Sign Up Gagal';
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                } else if (xhr.responseText) {
+                    errorMessage = xhr.responseText || 'An error occurred';
+                }
+                console.log('Sign Up gagal:', errorMessage);
+            }
+        });
+    });
+
+    $('#signin-form').submit(function(e) {
+        e.preventDefault();
+
+        let email = $('#email-signin').val();
+        let password = $('#pass-signin').val();
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/login',
+            type: 'POST',
+            data: JSON.stringify({
+                email: email,
+                password: password
+            }),
+            contentType: 'application/json',
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function(response) {
+                console.log('Sign In berhasil!', response);
+                localStorage.setItem('token', response.access_token);
+
+                setTimeout(function() {
+                    window.location.href = 'dashboard';
+                }, 3000);
+            },
+            error: function(xhr) {
+                let errorMessage = 'Sign In Gagal';
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                } else if (xhr.responseText) {
+                    errorMessage = xhr.responseText || 'An error occurred';
+                }
+                console.log('Sign In gagal:', errorMessage);
+            }
+        });
+    });
 </script>
+
 </html>

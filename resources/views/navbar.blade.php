@@ -50,7 +50,7 @@
                                 <!-- Nama hanya muncul di desktop -->
                             </a>
                         </li>
-                        <h5 class="fw-bold my-2">Felisa</h5>
+                        <h5 class="fw-bold my-2" id="username-profile"></h5>
 
                         <!-- Button Edit Profile -->
                         <li class="nav-item w-100">
@@ -85,7 +85,7 @@
                     <div class="mt-auto py-4 w-100 d-flex justify-content-center w-100">
                         <a href="#" class="nav-link p-1 p-sm-2 px-sm-4 btn btn-primary border border-dark border-2 fw-bold w-100">
                             <i class="fa-solid fa-right-from-bracket"></i>
-                            <span class="d-none d-sm-inline ms-1">Log Out</span>
+                            <span class="d-none d-sm-inline ms-1" id="logout">Log Out</span>
                         </a>
                     </div>
                 </div>
@@ -100,5 +100,58 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const token = localStorage.getItem('token');
+
+            if (token) {
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/user',
+                    type: 'GET',
+                    headers: {
+                    'Authorization': 'Bearer ' + token
+                    },
+                    success: function(user) {
+                        localStorage.setItem('userData', JSON.stringify(user));
+                        $('#username').text(user.name);
+                        $('#username-profile').text(user.name);
+                    },
+                        error: function(xhr) {
+                        console.error('Failed to fetch user data:', xhr);
+                    }
+                });
+            }
+        });
+
+
+        $(document).on('click', '#logout', function(e){
+            e.preventDefault();
+            const token = localStorage.getItem('token');
+
+            if (token) {
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/logout',
+                    type: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    },
+                    success: function(response) {
+                        localStorage.removeItem('token');
+                        window.location.href = "login";
+                    },
+                    error: function(xhr) {
+                        let errorMessage = "Logout failed";
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message;
+                        }
+                    }
+            });
+            }
+
+        })
+    </script>
 </body>
 </html>
