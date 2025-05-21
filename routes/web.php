@@ -21,5 +21,8 @@ Route::get('/data-terbaru', [NotifikasiController::class, 'dataBaru'])->name('da
 
 Route::get('/login', [DashboardController::class, 'login'])->name('login');
 Route::get('/profil', [DashboardController::class, 'profil'])->name('profil');
+Route::get('/dashboard', function(){
+    return view('dashboard');
+})->name('dashboard');
 
 
