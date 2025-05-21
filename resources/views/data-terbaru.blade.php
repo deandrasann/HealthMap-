@@ -2,7 +2,7 @@
 @section('content')
 <div class="container py-5">
     <div class="card card-custom p-4 h-100 w-100">
-    <h1 class="fw-bold text-start mb-4">Data Anak</h1>
+    <h1 class="fw-bold text-start mb-4">Data Anak Terbaru</h1>
 
     <div class="input-group w-25 my-4">
         <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
