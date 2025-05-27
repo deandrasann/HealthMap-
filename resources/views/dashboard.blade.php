@@ -136,19 +136,17 @@
             });
 
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/healthmap/malnutrition',
+                url: 'http://127.0.0.1:8000/api/healthmap/malnutrition/kecamatan',
                 type: 'GET',
                 headers: {
                 'Authorization': 'Bearer ' + token
                 },
                 success: function(response) {
-                    malNutritionData = response.data.data;
-                    sumMalData = response.total_malnutrition_cases;
-                    console.log(sumMalData)
-                    $('#sum-mal-data').text(sumMalData);
+                    console.log(response.data)
+                    malNutritionData = response.data;
 
                     const labels = malNutritionData.map(item => item.kecamatan_name);
-                    const data = malNutritionData.map(item => item.case_count);
+                    const data = malNutritionData.map(item => item.malnourished_children);
 
                     malChartData = {
                         labels: labels,
@@ -159,6 +157,22 @@
                     console.log(malChartData);
 
                     renderMalChart(malChartData);
+                },
+                    error: function(xhr) {
+                }
+            });
+
+
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/healthmap/malnutrition',
+                type: 'GET',
+                headers: {
+                'Authorization': 'Bearer ' + token
+                },
+                success: function(response) {
+                    sumMalData = response.total_malnutrition_cases;
+                    console.log(sumMalData)
+                    $('#sum-mal-data').text(sumMalData);
                 },
                     error: function(xhr) {
                 }

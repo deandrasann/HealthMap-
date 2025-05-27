@@ -10,70 +10,17 @@
       </div>
 
     <div class="table-responsive">
-        <table class="table table-striped align-middle">
+        <table class="table table-striped align-middle" id="kec-data-table">
             <thead>
                 <tr>
-                    <th >NIK</th>
-                    <th>Kecamatan</th>
-                    <th>Nama Anak</th>
-                    <th class="text-center">Tempat Tanggal Lahir</th>
-                    <th class="text-center">Jenis Kelamin</th>
-                    <th class="text-center">Data Nutrisi</th>
+                    <th id="id">ID</th>
+                    <th id="kec_name">Kecamatan</th>
+                    <th class="text-center" id="child_sum">Total Anak</th>
+                    <th class="text-center" id="child_mal">Total Anak Malnutrition</th>
+                    <th class="text-center" id="detail_data">Data Nutrisi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>340216000000000</td>
-                    <td>Gamping</td>
-                    <td> Melati</td>
-                    <td class="text-center">Yogyakarta, 30 Juni 2020</td>
-                    <td class="text-center">Perempuan</td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                    </td>
-                </tr>
-                <tr class="table-light">
-                    <td>340216000000000</td>
-                    <td>Turi</td>
-                    <td> Anggrek</td>
-                    <td class="text-center">Yogyakarta, 30 Juni 2020</td>
-                    <td class="text-center">Perempuan</td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>340216000000000</td>
-                    <td>Gamping</td>
-                    <td> Melati</td>
-                    <td class="text-center">Yogyakarta, 30 Juni 2020</td>
-                    <td class="text-center">Perempuan</td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                    </td>
-                </tr>
-                <tr class="table-light">
-                    <td>340216000000000</td>
-                    <td>Turi</td>
-                    <td> Anggrek</td>
-                    <td class="text-center">Yogyakarta, 30 Juni 2020</td>
-                    <td class="text-center">Perempuan</td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>340216000000000</td>
-                    <td>Gamping</td>
-                    <td> Melati</td>
-                    <td class="text-center">Yogyakarta, 30 Juni 2020</td>
-                    <td class="text-center">Perempuan</td>
-
-
-                    <td class="text-center">
-                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -84,6 +31,48 @@
     </div> --}}
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        const token = localStorage.getItem('token');
+        const tbody = $('#kec-data-table tbody');
+
+
+        if(token){
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/healthmap/malnutrition/kecamatan',
+                type: 'GET',
+                headers: {
+                'Authorization': 'Bearer ' + token
+                },
+                success: function(response) {
+                    console.log(response.data)
+                    if (response.data) {
+                        tbody.empty();
+                        response.data.forEach(item => {
+                            const row = `
+                                <tr>
+                                    <td>${item.id}</td>
+                                    <td>${item.kecamatan_name}</td>
+                                    <td class="text-center">${item.total_children}</td>
+                                    <td class="text-center">${item.malnourished_children}</td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
+                                    </td>
+                                </tr>`;
+                            tbody.append(row);
+                        });
+                    }
+                },
+                    error: function(xhr) {
+                }
+            });
+        }
+    })
+</script>
 
 
 
