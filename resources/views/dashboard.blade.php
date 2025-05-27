@@ -28,7 +28,7 @@
                 </div>
                 <div class="text-start flex-grow-1">
                     <h3 class="fw-bold">Notifikasi</h3>
-                    <p class="mb-2">Terdeteksi <strong>5 kasus</strong> gizi buruk di <strong>2 posyandu</strong></p>
+                    <p class="mb-2">Terdeteksi <strong><span id="sum-cases"></span></strong> <strong>kasus</strong> gizi buruk di <strong><span id="sum-unit"></span></strong> <strong>posyandu</strong></p>
                     <a href="{{ route('notifikasi') }}" class="btn btn-primary btn-sm border-dark">Lihat Detail</a>
                 </div>
             </div>
@@ -49,12 +49,12 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-start my-2">
                     <img src="{{asset('images/talk.png')}}" class="me-4">
-                    <h3 class="me-4 mb-0">10</h3>
+                    <h3 class="me-4 mb-0" id="new-notif"></h3>
                     <p class="mb-0">Notifikasi Baru</p>
                 </div>
                 <div class="d-flex align-items-center justify-content-start my-2">
                     <img src="{{asset('images/spot.png')}}" class="me-4">
-                    <h3 class="me-4 mb-0">2</h3>
+                    <h3 class="me-4 mb-0" id="new-unit"></h3>
                     <p class="mb-0">Data wilayah terupdate</p>
                 </div>
             </div>
@@ -117,6 +117,7 @@
                 'Authorization': 'Bearer ' + token
                 },
                 success: function(response) {
+                    $('#sum-mal-data').text(response.data['Gizi Buruk']['Jumlah Anak']);
                     sumData = response.data;
                     sumChartData = {
                         labels: ['Gizi Buruk', 'Gizi Baik'],
@@ -170,9 +171,12 @@
                 'Authorization': 'Bearer ' + token
                 },
                 success: function(response) {
-                    sumMalData = response.total_malnutrition_cases;
-                    console.log(sumMalData)
-                    $('#sum-mal-data').text(sumMalData);
+                    total_cases = response.total_malnutrition_cases;
+                    total_unit = response.data.total;
+                    $('#new-notif').text(total_cases);
+                    $('#sum-cases').text(total_cases);
+                    $('#sum-unit').text(total_unit);
+                    $('#new-unit').text(total_unit);
                 },
                     error: function(xhr) {
                 }

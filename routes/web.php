@@ -17,7 +17,7 @@ Route::get('/home', [DashboardController::class, 'dashboard']) -> name('home');
 Route::get('/data-anak', [AnakController::class, 'dataAnak'])->name('data-anak');
 Route::get('/data-kecamatan', [KecamatanController::class, 'dataKecamatan'])->name('data-kecamatan');
 Route::get('/notifikasi', [NotifikasiController::class, 'notifikasi'])->name('notifikasi');
-Route::get('/data-terbaru', [NotifikasiController::class, 'dataBaru'])->name('data-terbaru');
+Route::get('/data-terbaru/{id}', [NotifikasiController::class, 'dataBaru'])->name('data-terbaru');
 
 Route::get('/login', [DashboardController::class, 'login'])->name('login');
 Route::get('/profil', [DashboardController::class, 'profil'])->name('profil');

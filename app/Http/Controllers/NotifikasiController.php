@@ -11,8 +11,8 @@ class NotifikasiController extends Controller
         return view ('notifikasi');
 
     }
-        public function dataBaru() {
-        return view ('data-terbaru');
 
+    public function dataBaru($id) {
+        return view('data-terbaru', ['id' => $id]);
     }
 }
