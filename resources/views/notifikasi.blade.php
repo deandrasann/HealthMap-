@@ -65,11 +65,14 @@
         </table>
     </div>
 
+
+
     {{-- Pagination --}}
     {{-- <div class="d-flex justify-content-center mt-4">
         {{ $data->links('pagination::bootstrap-5') }}
     </div> --}}
     </div>
+        <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm border-dark fit-content mt-4 p-2" style="background-color: #FFFFFF !important">Kembali</a>
 </div>
 
 {{-- @foreach ($data as $row)

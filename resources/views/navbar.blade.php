@@ -53,12 +53,12 @@
                         <h5 class="fw-bold my-2" id="username-profile"></h5>
 
                         <!-- Button Edit Profile -->
-                        <li class="nav-item w-100">
+                        {{-- <li class="nav-item w-100">
                             <a href="{{ route('profil') }}" class="w-100 nav-link p-1 p-sm-2 px-sm-4 btn btn-primary border border-dark border-2 fw-bold {{ request()->routeIs('profil') ? 'active' : '' }}">
                                 <i class="fa-solid fa-pen-to-square"></i>
                                 <span class="d-none d-sm-inline ms-1">Edit Profil</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item w-100" >
                             <a href="{{ route('home') }}" class="w-100 nav-link p-1 p-sm-2 px-sm-4 btn btn-primary border border-dark border-2 fw-bold {{ request()->routeIs('home') ? 'active' : '' }}">

@@ -32,14 +32,31 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Data Nutrisi</h5>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {{-- JQuery --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-    $(document).ready(function () {
+ $(document).ready(function () {
         const token = localStorage.getItem('token');
         const tbody = $('#child-data-table tbody');
-        const searchInput = $('#search-input');
+        const modalBody = $('#exampleModal .modal-body'); // perbaikan selector
 
         function loadData(page = 1, keyword = '') {
             if (token) {
@@ -50,21 +67,25 @@
                         'Authorization': 'Bearer ' + token
                     },
                     success: function (response) {
-                        console.log('API response:', response);
                         if (response.data) {
                             tbody.empty();
                             response.data.forEach(item => {
                                 const row = `
                                     <tr>
-                                        <td>${item.id}</td>
-                                        <td>${item.kecamatan}</td>
-                                        <td>${item.name}</td>
-                                        <td class="text-center">${item.birth_date}</td>
-                                        <td class="text-center">${item.gender}</td>
-                                        <td class="text-center">
-                                            <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                                        </td>
-                                    </tr>`;
+                                            <td>${item.id}</td>
+                                            <td>${item.kecamatan}</td>
+                                            <td>${item.name}</td>
+                                            <td class="text-center">${item.birth_date}</td>
+                                            <td class="text-center">${item.gender}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm view-nutrition"
+                                                    data-toggle="modal"
+                                                    data-target="#exampleModal"
+                                                    data-child-id="${item.child_id}">
+                                                    Lihat Data
+                                                </button>
+                                            </td>
+                                        </tr>`;
                                 tbody.append(row);
                             });
 
@@ -77,6 +98,44 @@
                 });
             }
         }
+
+        // Tombol lihat data nutrisi
+        $(document).on('click', '.view-nutrition', function () {
+            const childId = $(this).data('child-id');
+            const token = localStorage.getItem('token');
+
+            $.ajax({
+                url: `http://127.0.0.1:8000/api/nutritrack/nutrition-record?child_id=${childId}`,
+                type: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                success: function (response) {
+                    console.log('Response API nutrisi:', response);
+
+
+                    const modalBody = $('#exampleModal .modal-body');
+                    modalBody.empty();
+
+                    if (response && response.id) {
+                        const content = `
+                            <p><strong>Tinggi Badan :</strong> ${response.height_cm} cm</p>
+                            <p><strong>Berat Badan :</strong> ${response.weight_kg} kg</p>
+                            <p><strong>BMI :</strong> ${response.bmi}</p>
+                            <p><strong>Status :</strong> ${response.nutrition_status}</p>
+                        `;
+                        console.log('HTML untuk modal:', content);
+                        modalBody.html(content);
+                    } else {
+                        modalBody.html('<p>kontol.</p>');
+                    }
+
+                },
+                error: function () {
+                    $('#exampleModal .modal-body').html('<p>Gagal mengambil data nutrisi.</p>');
+                }
+            });
+        });
 
         function renderPagination(pagination, keyword = '') {
             const container = $('#pagination-container');
@@ -108,6 +167,7 @@
 
         loadData();
     });
+
 
 </script>
 @endsection
