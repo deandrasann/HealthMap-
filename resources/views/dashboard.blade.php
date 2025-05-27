@@ -89,7 +89,7 @@
     </div>
     <div class="col-md-12 mt-4">
         <div class="card card-custom p-4 w-100 h-100">
-            <h4 class="fw-bold mb-4">Data anak stunting di <span class="text-success">tiap Kecamatan</span></h4>
+            <h4 class="fw-bold mb-4">Data anak malnutrition di <span class="text-success">tiap Kecamatan</span></h4>
             <canvas id="stuntingChart"></canvas>
         </div>
     </div>

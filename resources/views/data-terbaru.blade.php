@@ -2,31 +2,33 @@
 @section('content')
 <div class="container py-5">
     <div class="card card-custom p-4 h-100 w-100">
-    <h1 class="fw-bold text-start mb-4">Data Anak</h1>
-    <h2 class="fw-bold text-start mb-4" id="nama-posyandu"></h2>
+        <h1 class="fw-bold text-start mb-4">Data Anak</h1>
+        <h2 class="fw-bold text-start mb-4" id="nama-posyandu"></h2>
 
-    <div class="table-responsive">
-        <table class="table table-striped align-middle" id="child-data-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama Anak</th>
-                    <th class="text-center">Tanggal Lahir</th>
-                    <th class="text-center">TB</th>
-                    <th class="text-center">BB</th>
-                    <th class="text-center">BMI</th>
-                    <th class="text-center">Status Gizi</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle" id="child-data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama Anak</th>
+                        <th class="text-center">Tanggal Lahir</th>
+                        <th class="text-center">TB</th>
+                        <th class="text-center">BB</th>
+                        <th class="text-center">BMI</th>
+                        <th class="text-center">Status Gizi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        {{-- Pagination --}}
+        <div class="d-flex justify-content-center mt-4" id="pagination-container"></div>
     </div>
 
-    {{-- Pagination --}}
-    <div class="d-flex justify-content-center mt-4" id="pagination-container"></div>
-
-    </div>
+    <a href="{{ route('notifikasi') }}" class="btn btn-primary btn-sm border-dark fit-content mt-4 p-2"
+        style="background-color: #FFFFFF !important">Kembali</a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -101,4 +103,3 @@
 </script>
 
 @endsection
-

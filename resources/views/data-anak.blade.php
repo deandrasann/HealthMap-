@@ -81,7 +81,7 @@
                                                 <button class="btn btn-outline-success btn-sm view-nutrition"
                                                     data-toggle="modal"
                                                     data-target="#exampleModal"
-                                                    data-child-id="${item.child_id}">
+                                                    data-child-id="${item.id}">
                                                     Lihat Data
                                                 </button>
                                             </td>
@@ -99,35 +99,31 @@
             }
         }
 
-        // Tombol lihat data nutrisi
         $(document).on('click', '.view-nutrition', function () {
             const childId = $(this).data('child-id');
             const token = localStorage.getItem('token');
 
             $.ajax({
-                url: `http://127.0.0.1:8000/api/nutritrack/nutrition-record?child_id=${childId}`,
+                url: `http://127.0.0.1:8000/api/nutritrack/nutrition-record/child/${childId}`,
                 type: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + token
                 },
                 success: function (response) {
                     console.log('Response API nutrisi:', response);
-
-
                     const modalBody = $('#exampleModal .modal-body');
                     modalBody.empty();
 
-                    if (response && response.id) {
+                    if (response && response.nutrition_data) {
                         const content = `
-                            <p><strong>Tinggi Badan :</strong> ${response.height_cm} cm</p>
-                            <p><strong>Berat Badan :</strong> ${response.weight_kg} kg</p>
-                            <p><strong>BMI :</strong> ${response.bmi}</p>
-                            <p><strong>Status :</strong> ${response.nutrition_status}</p>
+                            <p><strong>Tinggi Badan :</strong> ${response.nutrition_data.height_cm} cm</p>
+                            <p><strong>Berat Badan :</strong> ${response.nutrition_data.weight_kg} kg</p>
+                            <p><strong>BMI :</strong> ${response.nutrition_data.bmi}</p>
+                            <p><strong>Status :</strong> ${response.nutrition_data.nutrition_status}</p>
                         `;
-                        console.log('HTML untuk modal:', content);
                         modalBody.html(content);
                     } else {
-                        modalBody.html('<p>kontol.</p>');
+                        console.error("Gagal ambil data:", xhr);
                     }
 
                 },

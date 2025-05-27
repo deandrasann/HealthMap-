@@ -2,31 +2,32 @@
 @section('content')
 <div class="container py-5">
     <div class="card card-custom p-4 h-100 w-100">
-    <h1 class="fw-bold text-start mb-4">Notifikasi Status Gizi Buruk</h1>
+        <h1 class="fw-bold text-start mb-4">Notifikasi Status Gizi Buruk</h1>
 
-    <div class="table-responsive">
-        <table class="table table-striped align-middle" id="data-table">
-            <thead>
-                <tr>
-                    <th>Waktu</th>
-                    <th>Kecamatan</th>
-                    <th>Posyandu</th>
-                    <th class="text-center">Jumlah Kasus</th>
-                    <th class="text-center">Lihat Data Anak</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped align-middle" id="data-table">
+                <thead>
+                    <tr>
+                        <th>Waktu</th>
+                        <th>Kecamatan</th>
+                        <th>Posyandu</th>
+                        <th class="text-center">Jumlah Kasus</th>
+                        <th class="text-center">Lihat Data Anak</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        {{-- Pagination --}}
+        <div class="d-flex justify-content-center mt-4" id="pagination-container"></div>
+
     </div>
-
-
-
-    {{-- Pagination --}}
-    <div class="d-flex justify-content-center mt-4" id="pagination-container"></div>
-
-    </div>
-        <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm border-dark fit-content mt-4 p-2" style="background-color: #FFFFFF !important">Kembali</a>
+    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm border-dark fit-content mt-4 p-2"
+        style="background-color: #FFFFFF !important">Kembali</a>
 </div>
 
 {{-- @foreach ($data as $row)
