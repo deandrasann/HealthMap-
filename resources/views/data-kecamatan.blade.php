@@ -17,7 +17,6 @@
                         <th id="kec_name">Kecamatan</th>
                         <th class="text-center" id="child_sum">Total Anak</th>
                         <th class="text-center" id="child_mal">Total Anak Malnutrition</th>
-                        <th class="text-center" id="detail_data">Data Nutrisi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,10 +79,7 @@
                                     <td>${item.id}</td>
                                     <td>${item.kecamatan_name}</td>
                                     <td class="text-center">${item.total_children}</td>
-                                    <td class="text-center">${item.malnourished_children}</td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                                    </td>
+                                    <td class="text-center">${item.malnourished_children}</td> 
                                 </tr>`;
                             tbody.append(row);
                         });
