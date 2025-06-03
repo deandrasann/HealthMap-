@@ -62,7 +62,9 @@
                                         <td>${item.weight_kg}</td>
                                         <td>${item.bmi}</td>
                                         <td class="text-center">
-                                            <div class="border border-dark rounded border-2">${item.nutrition_status}</div>
+                                            <div class="border border-dark rounded border-2 d-inline-block px-2 py-1">
+                                                ${item.nutrition_status}
+                                            </div>
                                         </td>
                                     </tr>`;
                                 tbody.append(row);

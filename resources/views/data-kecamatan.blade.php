@@ -17,7 +17,6 @@
                         <th id="kec_name">Kecamatan</th>
                         <th class="text-center" id="child_sum">Total Anak</th>
                         <th class="text-center" id="child_mal">Total Anak Malnutrition</th>
-                        <th class="text-center" id="detail_data">Data Nutrisi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,27 +24,6 @@
             </table>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         {{-- Pagination --}}
         {{-- <div class="d-flex justify-content-center mt-4">
@@ -81,9 +59,6 @@
                                     <td>${item.kecamatan_name}</td>
                                     <td class="text-center">${item.total_children}</td>
                                     <td class="text-center">${item.malnourished_children}</td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-outline-success btn-sm">Lihat Data</a>
-                                    </td>
                                 </tr>`;
                             tbody.append(row);
                         });
