@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+HealthMap
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+  Website ini merupakan sistem pemantauan gizi anak pada tingkat kabupaten. Website ini terintegrasi
+  dengan website pemantauan gizi anak di tingkat posyandu/puskesmas (NutrTrack). HealthMap mendukung
+  adanya efisiensi pelaporan, pengambilan keputusan berbasis data, dan dukungan untuk anak-anak stunting di
+  tingkat kabupaten.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Autentikasi dan Otorisasi**: Pengguna dapat melakukan registrasi, login, dan logout untuk mengakses sistem.
+- **Visualisasi Gizi Anak**:
+  - Pie chart: Menampilkan proporsi anak dengan gizi buruk dan anak yang memenuhi asupan gizi.
+  - Bar chart: Menampilkan jumlah anak bergizi buruk per kecamatan.
+- **Dashboard**: Sistem memberikan alert terkait data gizi buruk terbaru.
+- **Notifikasi**:
+  - Menampilkan jumlah wilayah dengan data gizi terbaru.
+  - Menampilkan data anak gizi buruk terbaru tiap posyandu.
+- **Detail Data**:
+  - Menampilkan detail seluruh data anak.
+  - Menampilkan informasi detail setiap kecamatan.
+ 
+  
+## Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Framework : Laravel 11, Bootstrap
+- Otorisasi dan Autentikasi : Laravel Sanctum dan Spatie
+- Arsitektur API : Postman
+- Bahasa Pemrograman : PHP, HTML, CSS, JS, Chart.js
+- Database: MySQL
+- UI/UX : Figma
+- Tools General : Draw.io, Google tools, Github, VSCode
 
-## Learning Laravel
+## Penggunaan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Mendaftar dan Login
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Buka halaman utama HealthMap.
+2. Apbila belum terdaftar, klik tombol **"Sign Up"** untuk membuat akun baru.
+3. Apabila sudah memiliki akun, login menggunakan akun yang sudah terdaftar untuk mengakses sistem.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Melihat dan Menganalisis Dashboard
 
-## Laravel Sponsors
+1. Masuk ke dashboard utama setelah login.
+2. Gunakan visualisasi (pie chart & bar chart) untuk memahami distribusi data gizi.
+3. Lihat alert terbaru yang ada pada dashboard untuk melihat update data terbaru. 
+4. Cek notifikasi untuk update data terbaru terkait gizi buruk.
+5. Klik pada kecamatan atau posyandu tertentu untuk melihat detail data.
+6. Analisis data untuk pengambilan keputusan berbasis wilayah.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Memantau data terbaru
 
-### Premium Partners
+1. Cek detail notifikasi untuk melihat update data terbaru terkait gizi buruk tiap posyandu.
+2. Klik pada tombol lihat data untuk melihat update data anak pada suatu posyandu
+3. kecamatan atau posyandu tertentu untuk melihat detail data.
+4. Analisis data untuk pengambilan keputusan berbasis wilayah.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Melihat Data Anak
+1. Klik pada tombol 'Data Anak' pada side bar untuk melihat data anak di satu kabupaten
+2. Klik pada tombol 'Lihat Detail' untuk melihat data gizi pada seorang anak
 
-## Contributing
+### Melihat Data Kecamatan
+1. Klik pada tombol 'Data Kecamatan' pada side bar untuk melihat data kecamatan di satu kabupaten
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Rencana Pengembangan Mendatang
 
-## Code of Conduct
+- Integrasi dengan layanan notifikasi (email/SMS) untuk pengingat atau laporan berkala.
+- Dashboard admin untuk analisis mendalam dan pengelolaan pengguna/data.
+- Visualisasi tren data per tahun atau per bulan.
+- Sistem pelacakan intervensi dan dampaknya terhadap gizi anak.
+- Integrasi sistem pengambilan keputusan berbasis AI untuk rekomendasi tindakan.
+- Fitur pemberian bantuan kepada suatu kecamatan dengan anak gizi buruk terbanyak
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Kontribusi
 
-## Security Vulnerabilities
+Untuk berkontribusi pada proyek ini dapat dilakukan langkah-langkah sebagai berikut:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork repositori ini
+2. Buat branch baru untuk fitur/bug (`git checkout -b fitur-baru`)
+3. Commit perubahan Anda (`git commit -m 'Menambahkan fitur baru'`)
+4. Push ke branch (`git push origin fitur-baru`)
+5. Buat Pull Request ke branch `main`
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
