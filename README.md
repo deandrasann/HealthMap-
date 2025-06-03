@@ -88,13 +88,13 @@ Kelompok 3, Projek Interoperabilitas Kelas PL4BB
 
 **Anggota Kelompok:**
 ```
-1. Deandra Santoso             (23/517045/SV/22736)
-2. Annisa Mutia Rahman         (23/515441/SV/22547)
-3. Irene Talitha Tyas Rahardjo (23/515223/SV/22503)
-4. Husna Felisa Cahyani        (23/513540/SV/22232)
-5. Tegar Adi Nugroho           (23/519703/SV/23165)
-6. Dwi Anggara Najwan S        (23/517178/SV/22744)
-7. Andika Dwi Prasetya         (23/522305/SV/23658)
+1. Deandra Santoso             
+2. Annisa Mutia Rahman         
+3. Irene Talitha Tyas Rahardjo 
+4. Husna Felisa Cahyani       
+5. Tegar Adi Nugroho           
+6. Dwi Anggara Najwan S        
+7. Andika Dwi Prasetya         
 ```
 
 **Program Studi Teknologi Rekayasa Perangkat Lunak**<br>
