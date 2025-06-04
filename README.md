@@ -24,10 +24,8 @@
 ## Technologies Used
 
 - Framework : Laravel 11, Bootstrap
-- Otorisasi dan Autentikasi : Laravel Sanctum dan Spatie
-- Arsitektur API : Postman
-- Bahasa Pemrograman : PHP, HTML, CSS, JS, Chart.js
-- Database: MySQL
+- Bahasa Pemrograman : PHP, HTML, CSS, JS
+- Library : Chart.js 
 - UI/UX : Figma
 - Tools General : Draw.io, Google tools, Github, VSCode
 
